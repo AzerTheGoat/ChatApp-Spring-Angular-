@@ -1,0 +1,301 @@
+openapi: 3.0.3
+info:
+  title: "GoatChat API"
+  description: "server API"
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8080/
+security:
+  - CookieAuth: [ ]
+
+
+tags:
+  - name: user
+    description: Authentication.
+  - name: conversation
+    description: Conversation manager.
+  - name: message
+    description: Message manager.
+
+
+paths:
+  /user/signup:
+    post:
+      summary: "POST user/signup"
+      operationId: "signup"
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserCredentialsDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+  /user/all:
+    get:
+      summary: "GET user/all"
+      operationId: "getAllUsers"
+      tags:
+        - user
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserProfileDTO"
+  /user/signin:
+    post:
+      summary: "POST user/signin"
+      operationId: "signin"
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserCredentialsDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+  /user/username:
+    get:
+      summary: "GET user/username"
+      operationId: "getUserName"
+      tags:
+        - user
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+  /user/profile:
+    get:
+      summary: "GET user/profile"
+      operationId: "profile"
+      tags:
+        - user
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfileDTO"
+  /user/signout:
+    post:
+      summary: "POST user/signout"
+      operationId: "signout"
+      tags:
+        - user
+      responses:
+        "200":
+          description: "OK"
+  /user/{login}:
+    delete:
+      summary: "DELETE user/{login}"
+      operationId: "delete"
+      tags:
+        - user
+      parameters:
+        - name: "login"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+
+  /message:
+    post:
+      summary: "POST message"
+      operationId: "messagePost"
+      tags:
+        - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewMessageDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTO"
+  /message/getAllMessagesOfConversation:
+    post:
+      summary: "POST message/getAllMessagesOfConversation"
+      operationId: "getAllMessageOfConversation"
+      tags:
+        - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Message"
+  /message/getLastMessagesOfConversation:
+    post:
+      summary: "POST message/getLastMessagesOfConversation"
+      operationId: "getLastMessageOfConversation"
+      tags:
+        - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Message"
+  /conversation/addConversation:
+    post:
+      summary: "POST conversation/addConversation"
+      operationId: "addConversation"
+      tags:
+        - conversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Conversation"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conversation"
+  /conversation/getAllConversationsOfUser:
+    get:
+      summary: "GET conversation/getAllConversationsOfUser"
+      operationId: "getAllConversationOfUser"
+      tags:
+        - conversation
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConversationDisplayDTO"
+
+components:
+  schemas:
+    UserCredentialsDTO:
+      type: "object"
+      properties:
+        login:
+          type: "string"
+        password:
+          type: "string"
+    UserProfileDTO:
+      type: "object"
+      properties:
+        login:
+          type: "string"
+
+    NewMessageDTO:
+      type: "object"
+      properties:
+        to:
+          type: "string"
+        type:
+          type: "string"
+        body:
+          type: "string"
+    MessageDTO:
+      type: "object"
+      properties:
+        timestamp:
+          type: "integer"
+          format: "int64"
+        from:
+          type: "string"
+        to:
+          type: "string"
+        type:
+          type: "string"
+        body:
+          type: "string"
+    Message:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        timestamp:
+          type: "integer"
+          format: "int64"
+        from:
+          type: "string"
+        to:
+          type: "string"
+        type:
+          type: "string"
+        body:
+          type: "string"
+
+    Conversation:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        messages:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Message"
+        username1:
+          type: "string"
+        username2:
+          type: "string"
+    ConversationDisplayDTO:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+        picture:
+          type: "string"
+        lastMessage:
+          type: "string"
+        timestamp:
+          type: "integer"
+          format: "int64"
+        isSeen:
+          type: "boolean"

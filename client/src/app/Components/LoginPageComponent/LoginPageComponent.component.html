@@ -1,0 +1,10 @@
+<!-- Rectangel Principale -->
+<app-BouleMouvement/>
+<div class="flex flex-row justify-center items-center relative" style="top: 100px;">
+  <div class="flex flex-row">
+    <app-LoginFormComponent/>
+    <div *ngIf="signUpDisplay">
+      <app-SignInComponent/>
+    </div>
+  </div>
+</div>

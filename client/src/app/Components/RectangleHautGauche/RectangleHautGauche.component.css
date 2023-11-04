@@ -1,0 +1,17 @@
+.user-list-container {
+    position: absolute;
+    left: 15px;
+    top: 60px; /* Ajustez la valeur en fonction de votre mise en page */
+    background-color: #C9B2C9;
+    width: 290px;
+    max-height: 300px; /* Ajustez la hauteur maximale selon vos besoins */
+    overflow-y: auto;
+  }
+/* styles.css ou votre fichier de styles */
+.blur {
+  backdrop-filter: blur(3px); /* Ajustez la valeur de flou selon vos préférences */
+}
+
+.hoverBoutonSeConnecter:hover{
+  background-color: #B38EB6;
+}

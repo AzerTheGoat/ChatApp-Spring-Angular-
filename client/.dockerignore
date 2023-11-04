@@ -1,0 +1,4 @@
+# Ignore everything but files that need to be copied in the container
+*
+!dist
+!nginx.conf

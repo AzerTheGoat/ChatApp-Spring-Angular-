@@ -1,0 +1,7 @@
+providers:
+  docker:
+    exposedByDefault: false
+
+# Enable Traefik web UI
+api:
+  insecure: true

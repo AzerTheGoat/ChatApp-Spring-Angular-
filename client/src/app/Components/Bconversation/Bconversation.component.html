@@ -1,0 +1,19 @@
+<!-- Block de message -->
+<div class="h-full w-full absolute" style="background-color: #F4E8E0; width: 366px; height: 620px; top : 108px; left : 12px; z-index: 4;overflow: auto;">
+  <div class="h-full w-full overflow-x-hidden absolute">
+  <app-BouleMouvement/>
+  <ul class="h-full w-full absolute" style="z-index: 4;">
+      <ng-container *ngFor="let message of messages">
+        <ng-container *ngIf="(message.from === username + '@goat' ) ||(message.from === username) ; then envoye else recu"></ng-container>
+        <ng-template #envoye>
+          <app-MessageRecuComponent [message]="message"></app-MessageRecuComponent>
+        </ng-template>
+        <ng-template #recu>
+          <app-MessageEnvoyeComponent [message]="message"></app-MessageEnvoyeComponent>
+
+        </ng-template>
+      </ng-container>
+    </ul>
+  </div>
+
+</div>

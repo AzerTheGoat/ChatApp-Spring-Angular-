@@ -1,0 +1,31 @@
+/* Styles pour la page A */
+.page-a {
+  display: none;
+}
+/* Styles pour la page B */
+.page-b {
+  display: none;
+}
+/* Afficher la page A si l'écran est plus large que 1311px */
+@media (min-width: 1312px) {
+  .page-a {
+    display: block;
+  }
+}
+/* Afficher la page B si l'écran est plus petit ou égal à 1311px */
+@media (max-width: 1311px) {
+  .page-b {
+    display: block;
+  }
+}
+body {
+  overflow: hidden;
+}
+
+.hoverBoutonSeConnecter:hover{
+  background-color: #B38EB6;
+}
+
+.hoverTextLoginPage:hover{
+  text-decoration: underline;
+}

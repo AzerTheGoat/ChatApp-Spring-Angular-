@@ -1,0 +1,41 @@
+<div class="container" style="background-color: #F4E8E0; width: 500px; height: 600px;">
+  <!-- logo svg -->
+  <div class="relative" style="width: 100px; height: 100px; margin-left: 250px; top: 40px;">
+    <img src="../../../assets/logo.png">
+  </div>
+
+  <!-- Form -->
+  <form (ngSubmit)="clickOnSignUpButton()" #signUpForm="ngForm">
+    <!-- email input -->
+    <div>
+      <input type="email" name="email" placeholder="Adresse mail" class="pl-3 focus:outline-none"
+             [(ngModel)]="email" name="email" required
+             style="background-color: #F5FBEF; border-radius: 13px; width: 230px; height: 42px; margin-left: 184px; margin-top: 30px">
+    </div>
+
+    <!-- password input -->
+    <div>
+      <input type="password" name="password" placeholder="Password" class="pl-3 focus:outline-none"
+             [(ngModel)]="password" name="password" required
+             style="background-color: #F5FBEF; border-radius: 13px; width: 230px; height: 42px; margin-left: 184px; margin-top: 30px">
+    </div>
+
+    <!-- Display error messages -->
+    <div *ngIf="isErrorOnSignUp" style="color: #B38EB6; margin-left: 300px; margin-top: 10px">
+      <p>Username already taken</p>
+    </div>
+    <div *ngIf="isSignUpPerfectly" style="color: #B38EB6; margin-left: 300px; margin-top: 10px">
+      <p>Sign Up Perfecty !!!</p>
+    </div>
+
+
+    <!-- Submit button -->
+    <div>
+      <button type="submit" class="rounded-full hoverBoutonSeConnecter"
+              [disabled]="signUpForm.invalid"
+              style="width: 190px; height: 30px; margin-left: 206px; margin-top: 30px">
+        S'inscrire
+      </button>
+    </div>
+  </form>
+</div>

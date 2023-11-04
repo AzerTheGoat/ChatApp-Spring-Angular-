@@ -1,0 +1,23 @@
+.times:hover .time {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.time {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: #C9B2C9; /* Définir la couleur du texte en bleu */
+}
+
+.times:hover .time-env {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.time-env {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: #C9B2C9; /* Définir la couleur du texte en bleu */
+}

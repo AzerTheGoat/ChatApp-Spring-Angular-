@@ -1,0 +1,12 @@
+<div class="absolute bottom-0 h-full" style="background-color: #C9B2C9; width: 400px; position: relative; overflow: hidden;">
+  <div *ngIf="!showParametre">
+  <app-RectangleHautGauche/>
+  <app-ReactangleBasGauche/>
+  </div>
+  <!-- Utilisation de *ngIf avec la valeur du service -->
+  <div *ngIf="showParametre">
+    <app-RectangleHautGaucheParametre/>
+    <app-RectangleBasGaucheParametre/>
+  </div>
+</div>
+

@@ -1,0 +1,104 @@
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+.ball2 {
+  width: 30px;
+  height: 30px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+.ball3 {
+  width: 20px;
+  height: 20px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes moveRight {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes moveUp {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes moveDown {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.ball:nth-child(1) {
+  animation: moveRight 70s linear infinite, moveDown 30s linear infinite;
+}
+
+.ball:nth-child(2) {
+  animation: moveRight 60s linear infinite, moveUp 49s linear infinite;
+}
+
+.ball:nth-child(3) {
+  animation: moveLeft 70s linear infinite, moveDown 30s linear infinite;
+}
+
+.ball:nth-child(4) {
+  animation: moveLeft 60s linear infinite, moveUp 49s linear infinite;
+}
+
+.ball2:nth-child(5) {
+  animation: moveRight 50s linear infinite, moveDown 60s linear infinite;
+  left: 50%; /* Position au milieu de l'écran */
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball2:nth-child(6) {
+  animation: moveLeft 25s linear infinite, moveUp 30s linear infinite;
+  left: 50%; /* Position au milieu de l'écran */
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball3:nth-child(7) {
+  animation: moveRight 19s linear infinite, moveUp 17s linear infinite;
+}
+
+.ball3:nth-child(8) {
+  animation: moveLeft 20s linear infinite, moveDown 17s linear infinite;
+}
+
+.ball3:nth-child(9) {
+  animation: moveRight 15s linear infinite, moveDown 12s linear infinite;
+}
+
+.ball3:nth-child(10) {
+  animation: moveLeft 30s linear infinite, moveUp 20s linear infinite;
+}

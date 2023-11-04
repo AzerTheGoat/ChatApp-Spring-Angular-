@@ -1,0 +1,12 @@
+<div  *ngIf="username !== ''" class="absolute" style="background-color: transparent; width: 900px; top: 0px; height: 750px; left: 400px; overflow: hidden;">
+
+  <app-BarHautDroite [username]="username"></app-BarHautDroite>
+  <app-MessageInput [username]="username"></app-MessageInput>
+  <app-Conversation [username]="username"></app-Conversation>
+
+</div>
+<div *ngIf="username === ''" class="absolute center-div" style="background-color: transparent; width: 900px; top: 0px; height: 750px; left: 400px; overflow: hidden;">
+  <!-- Mettez ici le contenu de votre rectangle avec la photo -->
+  <img src="assets/logo.png" class="center-image">
+</div>
+

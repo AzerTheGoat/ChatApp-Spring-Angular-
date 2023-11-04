@@ -1,0 +1,158 @@
+/* Styles pour la page A */
+.page-a {
+  display: none;
+}
+/* Styles pour la page B */
+.page-b {
+  display: none;
+}
+/* Afficher la page A si l'écran est plus large que 1311px */
+@media (min-width: 1312px) {
+  .page-a {
+    display: block;
+  }
+}
+/* Afficher la page B si l'écran est plus petit ou égal à 1311px */
+@media (max-width: 1311px) {
+  .page-b {
+    display: block;
+  }
+}
+body {
+  overflow: hidden;
+}
+
+div:hover::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 6px;
+  transition: background-color 0.5s ease-in-out; /* Transition plus lente */
+}
+div:hover::-webkit-scrollbar-track {
+  background-color: transparent; /* Couleur de fond de la barre de défilement */
+}
+textarea::placeholder {
+  text-align: left;
+  line-height: 60px; /* Ajustez la hauteur de ligne selon vos besoins */
+}
+.times:hover .time {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.time {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: #C9B2C9; /* Définir la couleur du texte en bleu */
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+.ball2 {
+  width: 30px;
+  height: 30px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+.ball3 {
+  width: 20px;
+  height: 20px;
+  background-color: #F2CACA;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes moveRight {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes moveUp {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes moveDown {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.ball:nth-child(1) {
+  animation: moveRight 70s linear infinite, moveDown 30s linear infinite;
+}
+
+.ball:nth-child(2) {
+  animation: moveRight 60s linear infinite, moveUp 49s linear infinite;
+}
+
+.ball:nth-child(3) {
+  animation: moveLeft 70s linear infinite, moveDown 30s linear infinite;
+}
+
+.ball:nth-child(4) {
+  animation: moveLeft 60s linear infinite, moveUp 49s linear infinite;
+}
+
+.ball2:nth-child(5) {
+  animation: moveRight 50s linear infinite, moveDown 60s linear infinite;
+  left: 50%; /* Position au milieu de l'écran */
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball2:nth-child(6) {
+  animation: moveLeft 25s linear infinite, moveUp 30s linear infinite;
+  left: 50%; /* Position au milieu de l'écran */
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball3:nth-child(7) {
+  animation: moveRight 19s linear infinite, moveUp 17s linear infinite;
+}
+
+.ball3:nth-child(8) {
+  animation: moveLeft 20s linear infinite, moveDown 17s linear infinite;
+}
+
+.ball3:nth-child(9) {
+  animation: moveRight 15s linear infinite, moveDown 12s linear infinite;
+}
+
+.ball3:nth-child(10) {
+  animation: moveLeft 30s linear infinite, moveUp 20s linear infinite;
+}
+.page-a,
+.page-b {
+  overflow: hidden;
+}
+
+
+

@@ -1,0 +1,70 @@
+services:
+  traefik:
+    image: traefik:v2.10
+#    configs:
+#      - source: traefik-yml
+#        target: /traefik.yml
+    command: --api.insecure=true --providers.docker.exposedByDefault=false
+#    command: --configFile /traefik.yml
+    ports:
+      - 80:80     # Clients web app
+      - 8080:8080 # Traefik web UI
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Allows Traefik to listen to Docker events
+    networks:
+      - acme1-network
+      - acme2-network
+
+  acme1-client:
+    environment:
+      CPOO_SERVER_URL: http://acme1-server:8080/
+    image: eu.gcr.io/mightycode/cpoo_client
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.acme1.rule=Host(`acme1.localhost`)"
+#    ports:
+#      - 81:80
+    build: ./client
+    networks:
+      - acme1-network
+    depends_on:
+      - acme1-server
+
+  acme2-client:
+    environment:
+      CPOO_SERVER_URL: http://acme2-server:8080/
+    image: eu.gcr.io/mightycode/cpoo_client
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.acme2.rule=Host(`acme2.localhost`)"
+#    ports:
+#      - 82:80
+    build: ./client
+    networks:
+      - acme2-network
+    depends_on:
+      - acme2-server
+
+  acme1-server:
+    environment:
+      CPOO_SERVER_DOMAIN: acme1
+    image: eu.gcr.io/mightycode/cpoo_server
+    build: ./server
+    networks:
+      - acme1-network
+
+  acme2-server:
+    environment:
+      CPOO_SERVER_DOMAIN: acme2
+    image: eu.gcr.io/mightycode/cpoo_server
+    build: ./server
+    networks:
+      - acme2-network
+
+networks:
+  acme1-network:
+  acme2-network:
+
+#configs:
+#  traefik-yml:
+#    file: ./traefik.yml

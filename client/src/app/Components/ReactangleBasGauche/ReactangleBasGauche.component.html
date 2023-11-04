@@ -1,0 +1,21 @@
+<div class="h-full w-full bg-transparent" style="top: 80px;">
+  <div class="h-full w-full absolute overflow-scroll overflow-x-hidden" style="top: 85px; background-color: #C9B2C9;">
+    <div class="h-full w-full absolute mt-2 " style=" left: 17px; background-color: #C9B2C9;">
+      <ul class="h-full w-full">
+        <ng-container *ngIf="isConversationExist">
+          <li *ngFor="let conversation of conversations" style="width: 356px; height: 72px;"class="conversation-item">
+            <app-ConversationHistoriqueComponent [username]="conversation.username" [dernierMessage]="conversation.lastMessage" [isRead]="conversation.isSeen" (click)="onConversationClick(conversation.username)"></app-ConversationHistoriqueComponent>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!isConversationExist">
+          <div class="h-full d-flex align-items-center justify-content-center">
+            <div class="rounded" style="background-color: white; text-align: center; padding: 10px;">
+              <p>Aucune conversation en cours</p>
+            </div>
+          </div>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>
+
